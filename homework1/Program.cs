@@ -22,6 +22,7 @@ Console.WriteLine($"Number {max} is the biigest and number {min} is the smallest
 
 //Задача 4: Напишите программу, которая принимает на вход три числа и выдаёт максимальное из этих чисел.//
 
+/* 
 Console.Write("Input a first number: ");
 int n1=Convert.ToInt32(Console.ReadLine());
 Console.Write("Input a second number: ");
@@ -36,5 +37,19 @@ if (n3>max) max=n3;
 
 Console.Write("max=");
 Console.WriteLine(max);
+*/
 
+//Задача 6: Напишите программу, которая на вход принимает число и выдаёт, является ли число чётным (делится ли оно на два без остатка).//
+
+Console.Write("Введите число:");
+int num =Convert.ToInt32(Console.ReadLine());
+
+if (num%2==0)
+    {
+        Console.WriteLine($"Число {num} четное");
+    }
+else 
+    {
+        Console.WriteLine($"Число {num} нечетное");
+    }
 
