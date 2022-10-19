@@ -40,3 +40,17 @@ else
 }
 
 */
+
+//Задача 15: Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, 
+//является ли этот день выходным.
+
+bool Weekend(int num)
+{
+    if (num==6||num==7) return true;
+    else return false;
+}
+
+Console.Write("Input a day of the week number: ");
+int num = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine($"Day {num} is a weekend. It is {Weekend(num)} ");
