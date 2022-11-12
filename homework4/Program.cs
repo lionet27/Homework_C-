@@ -74,7 +74,7 @@ void ShowArray(int[]array)
         Console.Write(array[i] + " ");
         Console.Write(",");
     }
-    //Console.Write("Q"+ "]");
+    Console.WriteLine(array[array.Length-1]+ "]");
 }
 
 Console.WriteLine("Input number of elements: ");
