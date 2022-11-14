@@ -22,7 +22,7 @@ void ShowArray(int[]array)
 // Задача 34: Задайте массив заполненный случайными положительными трёхзначными числами. 
 // Напишите программу, которая покажет количество чётных чисел в массиве.
 //[345, 897, 568, 234] -> 2
-
+/*
 int AmountEvenNumber(int[]array)
 {
     int current=0;
@@ -40,19 +40,29 @@ int max=999;
 int[] myArray=CreateRandomArray(n,min,max);
 ShowArray(myArray);
 Console.WriteLine($"Amount even number in array is {AmountEvenNumber(myArray)}");
+*/
+//Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов,
+// стоящих на нечётных позициях.
+// [3, 7, 23, 12] -> 19
+// [-4, -6, 89, 6] -> 0
 
+int SumOddIndex(int[] array)
+{
+    int sum=0;
+    for(int i=0;i<array.Length;i++)
+        if(i%2>0)
+            sum=sum+array[i];
+    return sum;
+}
 
-
-
-
-
-
-
-/*
 Console.WriteLine("Input number of elements: ");
 int n=Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Input a min possible value: ");
 int min=Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Input a max possible value: ");
 int max=Convert.ToInt32(Console.ReadLine());
-*/
+
+int[] myArray=CreateRandomArray(n,min,max);
+ShowArray(myArray);
+
+Console.WriteLine($"Amount numbers with odd index in array is {SumOddIndex(myArray)}");
