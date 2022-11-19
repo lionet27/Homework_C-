@@ -66,19 +66,6 @@ void Show2dArray(int[,]array)
     Console.WriteLine();
 }
 
-Console.WriteLine("Input number of  rows: ");
-int m=Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Input number of columns: ");
-int n=Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Input a min possible value: ");
-int min=Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Input a max possible value: ");
-int max=Convert.ToInt32(Console.ReadLine());
-
-Console.WriteLine("Input idex of  row: ");
-int i=Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Input index of column: ");
-int j=Convert.ToInt32(Console.ReadLine());
 
 // Решение через 2 метода. Проверки наличия элемента и вывода его значения при наличии. 
 
@@ -98,6 +85,20 @@ int ElementIJ(int[,]array,int i,int j)
     return element;
 }
 
+Console.WriteLine("Input number of  rows: ");
+int m=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input number of columns: ");
+int n=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input a min possible value: ");
+int min=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input a max possible value: ");
+int max=Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("Input idex of  row: ");
+int i=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input index of column: ");
+int j=Convert.ToInt32(Console.ReadLine());
+
 int[,] myArray=CreateRandom2dArray(m,n,min,max);
 Show2dArray(myArray);
 Console.WriteLine($"There is Element[{i},{j}] in array.It is "+IsThereElement(myArray,i,j));
@@ -109,7 +110,7 @@ if (IsThereElement(myArray,i,j)==true)
 
 */
 //Решение через void метод.
-
+/*
 void ShowElementIJ(int[,]array, int i, int j)
 
 {
@@ -118,8 +119,62 @@ void ShowElementIJ(int[,]array, int i, int j)
     else
         Console.WriteLine($"There is no element[{i},{j}].");
 }
+Console.WriteLine("Input number of  rows: ");
+int m=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input number of columns: ");
+int n=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input a min possible value: ");
+int min=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input a max possible value: ");
+int max=Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("Input idex of  row: ");
+int i=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input index of column: ");
+int j=Convert.ToInt32(Console.ReadLine());
 
 int[,] myArray=CreateRandom2dArray(m,n,min,max);
 Show2dArray(myArray);
 ShowElementIJ(myArray,i,j);
+*/
+//Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
 
+double[] EverageInColumns(int[,]array)
+{
+    double[]resultArray=new double[array.GetLength(1)];
+    for(int j=0; j<(array.GetLength(1)); j++)
+    {
+        double sumColumn=0;
+        for(int i=0; i<(array.GetLength(0)); i++)
+            sumColumn+=array[i,j];
+        resultArray[j]=Math.Round((sumColumn/array.GetLength(0)),2);
+    }
+    return resultArray;
+}
+
+void ShowArrayDouble(double[]array)
+{
+        Console.Write("Array is:[");
+
+    for(int i=0; i<(array.Length-1); i++)
+    {
+        Console.Write(array[i] + " ");
+        Console.Write(",");
+    }
+    Console.WriteLine(array[array.Length-1]+ "]");
+}
+
+Console.WriteLine("Input number of  rows: ");
+int m=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input number of columns: ");
+int n=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input a min possible value: ");
+int min=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input a max possible value: ");
+int max=Convert.ToInt32(Console.ReadLine());
+
+int[,] myArray=CreateRandom2dArray(m,n,min,max);
+Show2dArray(myArray);
+double[] everegeArray=EverageInColumns(myArray);
+Console.WriteLine("Everege of column are in a following array.");
+ShowArrayDouble(everegeArray);
