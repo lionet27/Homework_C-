@@ -55,7 +55,7 @@ SortMaxArray(myArray);
 Show2dArray(myArray);
 */
 //Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
-
+/*
 int IndexMinSumRow(int[,] array)
 {
     int indexMinSumRow=0;
@@ -91,3 +91,46 @@ int max=Convert.ToInt32(Console.ReadLine());
 int[,] myArray=CreateRandom2dArray(m,n,min,max);
 Show2dArray(myArray);
 Console.WriteLine($"Number of row with minimum sum of elemets is "+ IndexMinSumRow(myArray));
+*/
+
+//Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
+
+int[,] MatrixMultiplication(int[,]array1, int[,]array2)
+{
+    int[,] arrayMultipl = new int[array2.GetLength(0), array2.GetLength(1)];
+    if (array1.GetLength(1) == array2.GetLength(0))
+        {
+            for (int m = 0; m < arrayMultipl.GetLength(0); m++)
+                for (int n = 0; n < arrayMultipl.GetLength(1); n++)
+                    for (int j = 0, k = 0; j < array1.GetLength(1); j++, k++)
+                    {
+                        int multiple2elements = array1[m, j] * array2[k, n];
+                        arrayMultipl[m, n] += multiple2elements;
+                    }
+        }
+    else Console.WriteLine("It is impossible to multiply matrices!");
+    return arrayMultipl;
+}
+
+Console.WriteLine("Input number of  rows array1: ");
+int r1=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input number of columns array1: ");
+int c1=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input number of  rows array2: ");
+int r2=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input number of columns array2: ");
+int c2=Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("Input a min possible value: ");
+int min=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input a max possible value: ");
+int max=Convert.ToInt32(Console.ReadLine());
+
+int[,] myArray=CreateRandom2dArray(r1,c1,min,max);
+Show2dArray(myArray);
+
+int[,] myArray2=CreateRandom2dArray(r2,c2,min,max);
+Show2dArray(myArray2);
+
+int[,] matrixMultipl=MatrixMultiplication(myArray,myArray2);
+Show2dArray(matrixMultipl);
