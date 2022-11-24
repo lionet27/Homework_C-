@@ -151,7 +151,7 @@ Show2dArray(matrixMultipl);
 
 //Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. 
 //Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
-
+/*
 int[,,] CreateRandom3dArrayTwoDigitNumber(int rows, int columns, int depth)
 {
     int[,,] array = new int[rows, columns,depth];
@@ -208,3 +208,51 @@ int k=Convert.ToInt32(Console.ReadLine());
 
 int[,,] myArray=CreateRandom3dArrayTwoDigitNumber(m,n,k);
 Show3dArray(myArray);
+*/
+
+//Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
+
+int[,] CreateSpiralArray(int rows,int columns)
+{
+    int[,] array = new int[rows, columns];
+    int current=0;
+    
+    for (int k = 0, l = array.GetLength(1), m = array.GetLength(0); k < (array.GetLength(1) / 2 + 1); k++, l--, m--)
+    {
+        for (int j = k; j < l; j++)
+        {
+            int i = k;
+            array[i, j] = current + 1;
+            current++;
+        }
+        for (int i = k + 1; i < m; i++)
+        {
+            int j = l - 1;
+            array[i, j] = current + 1;
+            current++;
+        }
+        for (int j = l - 2; j >= k; j--)
+        {
+            int i = m - 1;
+            array[i, j] = current + 1;
+            current++;
+        }
+        for (int i = m - 2; i > k; i--)
+        {
+            int j = k;
+            array[i, j] = current + 1;
+            current++;
+        }
+    }
+
+    return array;    
+}
+
+Console.WriteLine("Input number of  rows: ");
+int m=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input number of columns: ");
+int n=Convert.ToInt32(Console.ReadLine());
+
+int[,] spiralArray=CreateSpiralArray(m,n);
+Show2dArray(spiralArray);
+
