@@ -1,4 +1,5 @@
-﻿int[,] CreateRandom2dArray(int rows, int columns, int minValue, int maxValue)
+﻿
+int[,] CreateRandom2dArray(int rows, int columns, int minValue, int maxValue)
 {
     int[,] array = new int[rows, columns];
 
@@ -21,6 +22,18 @@ void Show2dArray(int[,] array)
     }
 
     Console.WriteLine();
+}
+
+void ShowArray(int[]array)
+{
+        Console.Write("Array is:[");
+
+    for(int i=0; i<(array.Length-1); i++)
+    {
+        Console.Write(array[i] + " ");
+        Console.Write(",");
+    }
+    Console.WriteLine(array[array.Length-1]+ "]");
 }
 
 
@@ -94,7 +107,7 @@ Console.WriteLine($"Number of row with minimum sum of elemets is "+ IndexMinSumR
 */
 
 //Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
-
+/*
 int[,] MatrixMultiplication(int[,]array1, int[,]array2)
 {
     int[,] arrayMultipl = new int[array2.GetLength(0), array2.GetLength(1)];
@@ -134,3 +147,64 @@ Show2dArray(myArray2);
 
 int[,] matrixMultipl=MatrixMultiplication(myArray,myArray2);
 Show2dArray(matrixMultipl);
+*/
+
+//Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. 
+//Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
+
+int[,,] CreateRandom3dArrayTwoDigitNumber(int rows, int columns, int depth)
+{
+    int[,,] array = new int[rows, columns,depth];
+    int size=rows*columns*depth;
+    Console.WriteLine($"Nummber of elements in 3dArray: {size}");
+    if (size < 90)
+    {
+        int[] numbers = new int[size];
+        int[] bysort = new int[size];
+        numbers[0] = 10;
+        for (int n = 1; n < size; n++)
+            numbers[n] = numbers[n - 1] + 1;
+
+        for (int n = 1; n < size; n++)
+            bysort[n] = new Random().Next(1, 100);
+
+        Array.Sort(bysort, numbers);
+
+        int index = 0;
+        for (int i = 0; i < rows; i++)
+            for (int j = 0; j < columns; j++)
+                for (int k = 0; k < depth; k++)
+                {
+                    array[i, j, k] = numbers[index];
+                    index++;
+                }
+    }
+    else Console.WriteLine("It is impossible to create an array of non-repeating two-digit numbers");
+
+    return array;
+}
+
+void Show3dArray(int[,,] array)
+{
+    Console.WriteLine("Array is:");
+
+    for (int i = 0; i < (array.GetLength(0)); i++)
+    {
+        for (int j = 0; j < (array.GetLength(1)); j++)
+            for (int k = 0; k < (array.GetLength(2)); k++)
+                Console.Write(array[i, j,k] + $"({i},{j},{k})  ");
+        Console.WriteLine();
+    }    
+
+    Console.WriteLine();
+}
+
+Console.WriteLine("Input number of  rows: ");
+int m=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input number of columns: ");
+int n=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input number of depth: ");
+int k=Convert.ToInt32(Console.ReadLine());
+
+int[,,] myArray=CreateRandom3dArrayTwoDigitNumber(m,n,k);
+Show3dArray(myArray);
